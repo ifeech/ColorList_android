@@ -42,7 +42,7 @@ public class ColorDetail extends AppCompatActivity {
             case 3: return rgbToString(Vmin, Vdec, value);
             case 4: return rgbToString(Vinc, Vmin, value);
             case 5: return rgbToString(value, Vmin, Vdec);
-            default: throw new RuntimeException("Something went wrong when converting from HSV to RGB. Input was " + hue + ", " + saturation + ", " + value);
+            default: throw new RuntimeException("Ошибка конвертации HSV в RGB. HSV: " + hue + ", " + saturation + ", " + value);
         }
     }
 

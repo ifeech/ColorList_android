@@ -25,7 +25,7 @@ public class ColorName extends AppCompatActivity {
     }
 
     public String getNameColor(float hue) {
-        String nameColor = "Цвет неопределён";
+        String nameColor;
 
         if(hue < 20) nameColor = "Красный";
         else if(hue < 50) nameColor = "Оранжевый";
@@ -35,7 +35,8 @@ public class ColorName extends AppCompatActivity {
         else if(hue < 270) nameColor = "Синий";
         else if(hue < 300) nameColor = "Фиолетовый";
         else if(hue < 350) nameColor = "Розовый";
-        else nameColor = "Красный";
+        else if(hue < 359) nameColor = "Красный";
+        else nameColor = "Цвет неопределён";
 
         return nameColor;
     }
