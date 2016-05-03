@@ -14,21 +14,20 @@ public class ColorDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_detail);
 
-        TextView tvColor = (TextView) findViewById(R.id.tvColor);
-
         Intent intent = getIntent();
         float[] itemColor = intent.getFloatArrayExtra("itemColor");
 
         // фон страницы
         RelativeLayout detailColorPage = (RelativeLayout) findViewById(R.id.detailColorPage);
-        detailColorPage.setBackgroundColor(Color.HSVToColor(itemColor));
+        if (detailColorPage != null) detailColorPage.setBackgroundColor(Color.HSVToColor(itemColor));
 
         // вывод rgb цвета
         String rgbColor = hsvToRgb(itemColor[0], itemColor[1], itemColor[2]);
-        tvColor.setText(rgbColor);
+        TextView tvColor = (TextView) findViewById(R.id.tvColor);
+        if (tvColor != null) tvColor.setText(rgbColor);
     }
 
-    public String hsvToRgb(float hue, float saturation, float value) {
+    public final String hsvToRgb(float hue, float saturation, float value) {
 
         int h = (int)(hue/60) % 6;
         float Vmin = (1 - saturation)*value;
@@ -47,7 +46,7 @@ public class ColorDetail extends AppCompatActivity {
         }
     }
 
-    public String rgbToString(float r, float g, float b) {
+    public final String rgbToString(float r, float g, float b) {
         String rs = Integer.toString((int)(r * 255));
         String gs = Integer.toString((int)(g * 255));
         String bs = Integer.toString((int)(b * 255));

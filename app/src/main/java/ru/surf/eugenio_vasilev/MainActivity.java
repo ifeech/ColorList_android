@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +13,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private ArrayList<float[]> hsvColorsList = new ArrayList<float[]>();
 
@@ -29,7 +30,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ListView lvMain = (ListView) findViewById(R.id.lvMain);
         if (lvMain != null) lvMain.setAdapter(lvAdapter);
 
-        lvMain.setOnItemClickListener(this);
+        if (lvMain != null) {
+            lvMain.setOnItemClickListener(this);
+            lvMain.setOnItemLongClickListener(this);
+        }
     }
 
     private void createHsvColorList(){
@@ -45,5 +49,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // передаём цвет
         ColorDetailIntent.putExtra("itemColor", hsvColorsList.get(position));
         startActivity(ColorDetailIntent);
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent ColorName = new Intent(this, ColorName.class);
+
+        // передаём цвета
+        ColorName.putExtra("itemColor", hsvColorsList.get(position));
+        startActivity(ColorName);
+
+        return true;
     }
 }
