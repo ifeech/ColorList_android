@@ -1,13 +1,18 @@
 package ru.surf.eugenio_vasilev;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ArrayList<float[]> hsvColorsList = new ArrayList<float[]>();
 
@@ -22,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         // настраиваем список
         ListView lvMain = (ListView) findViewById(R.id.lvMain);
-        lvMain.setAdapter(lvAdapter);
+        if (lvMain != null) lvMain.setAdapter(lvAdapter);
+
+        lvMain.setOnItemClickListener(this);
     }
 
     private void createHsvColorList(){
@@ -31,4 +38,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent ColorDetailIntent = new Intent(this, ColorDetail.class);
+
+        // передаём цвет
+        ColorDetailIntent.putExtra("itemColor", hsvColorsList.get(position));
+        startActivity(ColorDetailIntent);
+    }
 }
