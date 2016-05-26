@@ -15,8 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ColorDetail" android:label="Просмотр цвета" />
-        <activity android:name=".ColorName" android:label="Название цвета" android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:name=".ColorDetailActivity" android:label="Просмотр цвета" />
+        <activity android:name=".ColorNameActivity" android:label="Название цвета" android:theme="@style/Theme.AppCompat.Dialog"/>
     </application>
 
 </manifest>

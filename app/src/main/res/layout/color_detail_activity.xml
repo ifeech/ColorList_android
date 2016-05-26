@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detailColorPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.surf.eugenio_vasilev.ColorDetail">
+    tools:context=".ColorDetailActivity">
 
     <TextView
+        android:id="@+id/color_detail_rgb_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Color RGB"
-        android:id="@+id/tvColor"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/colorWhite"
+        android:textIsSelectable="false"
         android:textSize="25sp"
-        android:textIsSelectable="false" />
+        />
 </RelativeLayout>

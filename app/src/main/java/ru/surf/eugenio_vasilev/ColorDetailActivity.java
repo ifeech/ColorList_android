@@ -7,28 +7,27 @@ import android.os.Bundle;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ColorDetail extends AppCompatActivity {
+public class ColorDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_color_detail);
+        setContentView(R.layout.color_detail_activity);
 
-        Intent intent = getIntent();
-        float[] itemColor = intent.getFloatArrayExtra("itemColor");
+        Intent mainIntent = getIntent();
+        float[] hsvColor = mainIntent.getFloatArrayExtra("extra_hsv_color");
 
         // фон страницы
         RelativeLayout detailColorPage = (RelativeLayout) findViewById(R.id.detailColorPage);
-        if (detailColorPage != null) detailColorPage.setBackgroundColor(Color.HSVToColor(itemColor));
+        if (detailColorPage != null) detailColorPage.setBackgroundColor(Color.HSVToColor(hsvColor));
 
         // вывод rgb цвета
-        String rgbColor = hsvToRgb(itemColor[0], itemColor[1], itemColor[2]);
-        TextView tvColor = (TextView) findViewById(R.id.tvColor);
-        if (tvColor != null) tvColor.setText(rgbColor);
+        String textRgbColor = hsvToRgb(hsvColor[0], hsvColor[1], hsvColor[2]);
+        TextView rgbLabel = (TextView) findViewById(R.id.color_detail_rgb_label);
+        if (rgbLabel != null) rgbLabel.setText(textRgbColor);
     }
 
     public final String hsvToRgb(float hue, float saturation, float value) {
-
         int h = (int)(hue/60) % 6;
         float Vmin = (1 - saturation)*value;
         float a = (value - Vmin)*((hue % 60)/60);
@@ -50,6 +49,7 @@ public class ColorDetail extends AppCompatActivity {
         String rs = Integer.toString((int)(r * 255));
         String gs = Integer.toString((int)(g * 255));
         String bs = Integer.toString((int)(b * 255));
+
         return "R: " + rs + ", G: " + gs + ", B: " + bs;
     }
 }

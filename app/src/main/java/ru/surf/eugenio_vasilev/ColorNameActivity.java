@@ -1,27 +1,24 @@
 package ru.surf.eugenio_vasilev;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ColorName extends AppCompatActivity {
+public class ColorNameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_color_name);
+        setContentView(R.layout.color_name_activity);
 
-        Intent intent = getIntent();
-        float[] itemColor = intent.getFloatArrayExtra("itemColor");
-
-        String nameColor = getNameColor(itemColor[0]);
+        Intent mainIntent = getIntent();
+        float[] hsvColor = mainIntent.getFloatArrayExtra("extra_hsv_color");
+        String nameColor = getNameColor(hsvColor[0]);
 
         // вывод названия цвета
-        TextView tvNameColor = (TextView) findViewById(R.id.tvNameColor);
-        if (tvNameColor != null) tvNameColor.setText(nameColor);
+        TextView colorNameLabel = (TextView) findViewById(R.id.color_name_label);
+        if (colorNameLabel != null) colorNameLabel.setText(nameColor);
     }
 
     public String getNameColor(float hue) {
