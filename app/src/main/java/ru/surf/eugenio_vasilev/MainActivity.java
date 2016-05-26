@@ -3,6 +3,8 @@ package ru.surf.eugenio_vasilev;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -58,5 +60,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         for(float i = 0; i < 360; i++){
             hsvColorsList.add(new float[]{i, 1, 1});
         }
+    }
+
+    // создание меню
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // обработка нажатий меню
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_menu_open_activity:
+                    Intent extraIntent = new Intent(this, ExtraActivity.class);
+                    startActivity(extraIntent);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

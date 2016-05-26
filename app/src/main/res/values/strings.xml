@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ColorList</string>
+
+    <string name="action_menu_open_activity">Open ExtraActivity</string>
 </resources>

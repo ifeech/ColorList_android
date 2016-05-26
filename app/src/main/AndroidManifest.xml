@@ -11,12 +11,20 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ColorDetailActivity" android:label="Просмотр цвета" />
-        <activity android:name=".ColorNameActivity" android:label="Название цвета" android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity
+            android:name=".ColorDetailActivity"
+            android:label="Просмотр цвета" />
+        <activity
+            android:name=".ColorNameActivity"
+            android:label="Название цвета"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
+            android:name=".ExtraActivity"
+            android:label="Extra Activity">
+        </activity>
     </application>
 
 </manifest>
